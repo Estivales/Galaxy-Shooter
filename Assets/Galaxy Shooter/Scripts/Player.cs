@@ -6,29 +6,42 @@ public class Player : MonoBehaviour {
     public GameObject laserPrefeb;
 
     [SerializeField]
-    private float speed = 7.0f;
+    private float _speed = 7.0f;
+    [SerializeField]
+    private float _fireRate = 0.25f;
+    private float _canFIre = 0.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Movement();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(laserPrefeb, new Vector3(transform.position.x, transform.position.y + 0.88f, 0), Quaternion.identity);
+            Shoot();
         }
     }
     
+
+    private void Shoot()
+    {
+        if (Time.time > _canFIre)
+        {
+            Instantiate(laserPrefeb, new Vector3(transform.position.x, transform.position.y + 0.88f, 0), Quaternion.identity);
+            _canFIre = Time.time + _fireRate;
+        }
+    }
+
     private void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-        transform.Translate(Vector3.up * Time.deltaTime * speed * verticalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * _speed * horizontalInput);
+        transform.Translate(Vector3.up * Time.deltaTime * _speed * verticalInput);
 
 
         if (transform.position.y < -4.2f)
