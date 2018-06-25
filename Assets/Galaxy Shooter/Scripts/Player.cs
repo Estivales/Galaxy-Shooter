@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public GameObject laserPrefeb;
+
     [SerializeField]
     private float speed = 7.0f;
 
@@ -13,6 +15,11 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Movement();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(laserPrefeb, new Vector3(transform.position.x, transform.position.y + 0.88f, 0), Quaternion.identity);
+        }
     }
     
     private void Movement()
