@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public GameObject laserPrefeb;
+
+    public bool canTripleShot = false;
+
+    [SerializeField]
+    public GameObject _laserPrefeb;
+    [SerializeField]
+    public GameObject _tripleShotPrefeb;
 
     [SerializeField]
     private float _speed = 7.0f;
@@ -30,8 +36,19 @@ public class Player : MonoBehaviour {
     {
         if (Time.time > _canFIre)
         {
-            Instantiate(laserPrefeb, new Vector3(transform.position.x, transform.position.y + 0.88f, 0), Quaternion.identity);
+
+            if (canTripleShot)
+            {
+                Instantiate(_tripleShotPrefeb, new Vector3(transform.position.x - 0.25f, transform.position.y + 0.1f, 0), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_laserPrefeb, new Vector3(transform.position.x, transform.position.y + 0.88f, 0), Quaternion.identity);
+            }
+
             _canFIre = Time.time + _fireRate;
+
+          
         }
     }
 

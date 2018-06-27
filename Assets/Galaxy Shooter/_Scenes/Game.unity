@@ -141,9 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca5e88bff8118b4bbeb5c25639229cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefeb: {fileID: 1410543811350384, guid: 64d2e5c9cfc77d84281d90c3f37d16fd,
+  canTripleShot: 0
+  _laserPrefeb: {fileID: 1410543811350384, guid: 64d2e5c9cfc77d84281d90c3f37d16fd,
     type: 2}
-  speed: 5
+  _tripleShotPrefeb: {fileID: 1978128433777826, guid: 965d1401fde65e147a52e0ee0daf6f9a,
+    type: 2}
+  _speed: 7
+  _fireRate: 0.25
 --- !u!212 &212376183
 SpriteRenderer:
   m_ObjectHideFlags: 0
